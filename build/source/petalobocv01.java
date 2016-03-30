@@ -78,7 +78,6 @@ Seleccionar paleta de color
   r1 = round(random(0, 1));
   r2 = round(random(1, 2));
   //println("Orquidea", , "PrimerospetalosColor", r1, "SegundospetalosColor",r2);
-
   /*//////////////////////////////////////////
         Settings de Sliders
 */ //////////////////////////////////////////
@@ -165,18 +164,57 @@ paleta = palG.createPal(colorDatosH);
   int numerodefiguras = 20;
   int intervalo = 8;
 
-  for (int i = 0; i <= numerodefiguras; i += intervalo) {
+  float randomN = random(-.2f,.2f);
+  float particularVar = randomN * randomGaussian();
+    //println("var",particularVar);
+    //La distancia del pinto inicial de la cabeza hasta el punto inicial de los ojos
+    float distanciaCaraOjos =dist(caraDatosE[0],caraDatosE[1],ojosDatosE[0], ojosDatosE[1]);
+    float val2 = map(distanciaCaraOjos,50, 80, -5, -12)*10;
+    //println(val2);
+    // la distancia delos ojos a la boca
+    float distanciaOjosBoca =dist(ojosDatosE[0],ojosDatosE[1],bocaDatosE[0], bocaDatosE[1]);
+    float val1 = map(distanciaOjosBoca,60, 80, 5, 12)*10;
+    println(val1);
 
+  for (int i = 0; i <= numerodefiguras; i += intervalo) {
     /*//////////////////////////////////////////////////////////////////////////////////////////
         La base principal de la orquidea esta mapeada a los valores de la cara EJ. cara.width == base.width
     *///////////////////////////////////////////////////////////////////////////////////////////
-    //TODO Generar un dado de 4 lados que genere las variables
-// (float v0, float v1, float v2, float v3, float ancho,float altura, float op, color col, float z)
-    dibujarBase(caraDatosE[2]/5, map(caraDatosE[2], 120,264, 0,10),caraDatosE[2]/5,caraDatosE[2]/5,
-                caraDatosE[2]*i/intervalo,caraDatosE[2]*i/intervalo,
+    //TODO Generar un redes neuronales de 4 inputs que genere las coombinaciones
+    dibujarBase(caraDatosE[2]*particularVar,val1, val2,caraDatosE[2]*particularVar
+              ,narizDatosE[3]*10.2f,narizDatosE[2]*13.2f,
+              //,caraDatosE[2]*8.2,caraDatosE[2]*8.2,
+    					random(110,120),paleta[0],-20
+              );
+    pushMatrix();
+    translate(0,30);
+    rotateX(90);
+    dibujarBase(caraDatosE[2]*particularVar,val1, val2,caraDatosE[2]*particularVar
+              ,(narizDatosE[3]*10.2f)*.3f,(narizDatosE[2]*13.2f)*.6f,
+              //,caraDatosE[2]*8.2,caraDatosE[2]*8.2,
+              random(110,120),paleta[2],-10
+              );
+    popMatrix();
+
+    dibujarPetalo2(ojosDatosE[2], ojosDatosE[2], ojosDatosE[2],ojosDatosE[2],
+                   (ojosDatosE[2]*3), (ojosDatosE[3]*7),
+                   random(80,90), paleta[3], 10
+                   );
+    dibujarPetalo5(narizDatosE[2], narizDatosE[2], narizDatosE[2],narizDatosE[2],
+                   (narizDatosE[2]*3), (narizDatosE[3]*7),
+                  random(90,100), paleta[3], 20
+                  );
+    dibujarPetalo6(narizDatosE[2], narizDatosE[2], narizDatosE[2],narizDatosE[2],
+                  (narizDatosE[2]*3), (narizDatosE[3]*7),
+                  random(90,100), paleta[3], 20
+                  );
+
+    // (float v0, float v1, float v2, float v3, float ancho,float altura, float op, color col, float z)
+    //dibujarBase(caraDatosE[2]*particularVar, caraDatosE[2]*particularVar,caraDatosE[2]*particularVar,caraDatosE[2]*particularVar,
+                /*caraDatosE[2]*i/intervalo,caraDatosE[2]*i/intervalo,
                 random(70,100) , paleta[0],-10);
 
-    dibujarBase(caraDatosE[2]/5, caraDatosE[2]/5, caraDatosE[2] / 5, caraDatosE[3] / 2,
+    dibujarBase(caraDatosE[2]/5, map(caraDatosE[2], 120,264, 0,10), caraDatosE[2] / 5, caraDatosE[3] / 2,
                 caraDatosE[2]*i/intervalo-30,caraDatosE[2]*i/intervalo-30,
                 random(20,30), paleta[r2], -5);
 
@@ -186,7 +224,8 @@ paleta = palG.createPal(colorDatosH);
     dibujarPetalo6(narizDatosE[3], narizDatosE[3], narizDatosE[3],narizDatosE[3],
                    10 * narizDatosE[3] * noise(500 * narizDatosE[3] * i),12 * narizDatosE[3] * noise(i * narizDatosE[3] * 10),
                    random(70,90), paleta[4], 2);
-  }
+*/
+}
 
   fill(paleta[4], 60);
   translate(0, 0, 2);
@@ -199,15 +238,14 @@ paleta = palG.createPal(colorDatosH);
 
 public void dibujarBase(float v0, float v1, float v2, float v3, float ancho,float altura, float op, int col, float z) {
   //float ra = random(10) * randomGaussian();
-  dibujarPetalo0(v0, v1, v2, v3, ancho, altura, op, col, z - 2);
-  dibujarPetalo1(v0, v1, v2, v3, ancho, altura, op, col, z - 2);
+  dibujarPetalo0(v0, v1, v2, v3, ancho, altura, op*.8f, col, z - 2);
+  dibujarPetalo1(v0, v1, v2, v3, ancho, altura, op*.8f, col, z - 2);
   dibujarPetalo3(v0, v1, v2, v3, ancho, altura, op, col, z);
   dibujarPetalo4(v0, v1, v2, v3, ancho, altura, op, col, z);
-  dibujarPetalo5(v0, v1, v2, v3, ancho, altura, op / 2, col, z + 2);
+  dibujarPetalo5(v0, v1, v2, v3, ancho, altura* .8f, op *1.5f, col, z + 2);
 }
 
-public void dibujarPetalo0(float v0, float v1, float v2, float v3, float ancho,
-                    float altura, float op, int col, float z) {
+public void dibujarPetalo0(float v0, float v1, float v2, float v3, float ancho,float altura, float op, int col, float z) {
 
   int xC = 0;
   int yC = 0;
@@ -282,8 +320,7 @@ public void dibujarPetalo0(float v0, float v1, float v2, float v3, float ancho,
   popMatrix();
 }
 
-public void dibujarPetalo1(float v0, float v1, float v2, float v3, float ancho,
-                    float altura, float op, int col, float z) {
+public void dibujarPetalo1(float v0, float v1, float v2, float v3, float ancho,float altura, float op, int col, float z) {
   int xC = 0;
   int yC = 0;
   pushMatrix();
@@ -324,8 +361,7 @@ public void dibujarPetalo1(float v0, float v1, float v2, float v3, float ancho,
   popMatrix();
 }
 
-public void dibujarPetalo2(float v0, float v1, float v2, float v3, float ancho,
-                    float altura, float op, int col, float z) {
+public void dibujarPetalo2(float v0, float v1, float v2, float v3, float ancho,float altura, float op, int col, float z) {
   pushMatrix();
   translate(0, 0, z);
   /*
@@ -347,8 +383,7 @@ public void dibujarPetalo2(float v0, float v1, float v2, float v3, float ancho,
   popMatrix();
 }
 
-public void dibujarPetalo3(float v0, float v1, float v2, float v3, float ancho,
-                    float altura, float op, int col, float z) {
+public void dibujarPetalo3(float v0, float v1, float v2, float v3, float ancho,float altura, float op, int col, float z) {
   int xC = 0;
   int yC = 0;
   // println("Ancho:", ancho, "Altura:", altura, "Centro x:", xC, "Centro y:",
@@ -536,24 +571,24 @@ void keyPressed() {
 public void oscEvent(OscMessage theOscMessage) {
   /* check if theOscMessage has the address pattern we are looking for. */
   if (theOscMessage.checkAddrPattern("/datos/color/") == true) {
-    println("### Mensaje OSC recibido #0");
+    //println("### Mensaje OSC recibido #0");
     /* check if the typetag is the right one. */
     if (theOscMessage.checkTypetag("i")) {
       /* parse theOscMessage and extract the values from the osc message
        * arguments. */
       //El color entra como Integer
       colorDatosE = theOscMessage.get(0).intValue();
-      print("### Mensaje OSC recibido.");
+      //print("### Mensaje OSC recibido.");
       //Convertir ints del color a Strings de Hex
       colorDatosH = hex(colorDatosE,6);
-      println("------Int:",colorDatosE,"------Hex:"+"#",colorDatosH);
+      //println("------Int:",colorDatosE,"------Hex:"+"#",colorDatosH);
       //println("Datos Color H: " + colorDatosH);
       //println("Datos Color E: " + colorDatosE);
       //gen.createPal(colorDatosH);
       return;
     }
   } else if (theOscMessage.checkAddrPattern("/datos/cara/") == true) {
-    println("### Mensaje OSC recibido #1");
+    //println("### Mensaje OSC recibido #1");
     /* check if the typetag is the right one. */
     if (theOscMessage.checkTypetag("iiii")) {
       /* parse theOscMessage and extract the values from the osc message
@@ -571,7 +606,7 @@ public void oscEvent(OscMessage theOscMessage) {
       return;
     }
   } else if (theOscMessage.checkAddrPattern("/datos/ojos/") == true) {
-    println("### Mensaje OSC recibido #2");
+    //println("### Mensaje OSC recibido #2");
     /* check if the typetag is the right one. */
     if (theOscMessage.checkTypetag("iiii")) {
       /* parse theOscMessage and extract the values from the osc message
