@@ -78,8 +78,8 @@ Seleccionar paleta de color
   r1 = round(random(0, 1));
   r2 = round(random(1, 2));
   //println("Orquidea", , "PrimerospetalosColor", r1, "SegundospetalosColor",r2);
-  /*//////////////////////////////////////////
-        Settings de Sliders
+/*//////////////////////////////////////////
+Settings de Sliders
 */ //////////////////////////////////////////
   /*cp5.addSlider("ancho").setPosition(20, 50).setWidth(50).setRange(0, 50);
   cp5.addSlider("alto").setPosition(20, 70).setWidth(50).setRange(0, 30);
@@ -181,7 +181,7 @@ paleta = palG.createPal(colorDatosH);
         La base principal de la orquidea esta mapeada a los valores de la cara EJ. cara.width == base.width
     *///////////////////////////////////////////////////////////////////////////////////////////
     //TODO Generar un redes neuronales de 4 inputs que genere las coombinaciones
-    dibujarBase(caraDatosE[2]*particularVar,val1, val2,caraDatosE[2]*particularVar
+    dibujarBase(val1,caraDatosE[2]*particularVar, val2,caraDatosE[2]*particularVar
               ,narizDatosE[3]*10.2f,narizDatosE[2]*13.2f,
               //,caraDatosE[2]*8.2,caraDatosE[2]*8.2,
     					random(110,120),paleta[0],-20
@@ -200,6 +200,8 @@ paleta = palG.createPal(colorDatosH);
                    (ojosDatosE[2]*3), (ojosDatosE[3]*7),
                    random(80,90), paleta[3], 10
                    );
+
+
     dibujarPetalo5(narizDatosE[2], narizDatosE[2], narizDatosE[2],narizDatosE[2],
                    (narizDatosE[2]*3), (narizDatosE[3]*7),
                   random(90,100), paleta[3], 20
@@ -623,7 +625,7 @@ public void oscEvent(OscMessage theOscMessage) {
       return;
     }
   } else if (theOscMessage.checkAddrPattern("/datos/nariz/") == true) {
-    println("### Mensaje OSC recibido #3");
+    //println("### Mensaje OSC recibido #3");
     /* check if the typetag is the right one. */
     if (theOscMessage.checkTypetag("iiii")) {
       /* parse theOscMessage and extract the values from the osc message
@@ -640,7 +642,7 @@ public void oscEvent(OscMessage theOscMessage) {
       return;
     }
   } else if (theOscMessage.checkAddrPattern("/datos/boca/") == true) {
-    println("### Mensaje OSC recibido #4");
+    //println("### Mensaje OSC recibido #4");
     /* check if the typetag is the right one. */
     if (theOscMessage.checkTypetag("iiii")) {
       /* parse theOscMessage and extract the values from the osc message
@@ -657,7 +659,7 @@ public void oscEvent(OscMessage theOscMessage) {
       return;
     }
   } else if(theOscMessage.checkAddrPattern("/datos/null/")){
-    println("### Mensaje OSC recibido #null");
+    //println("### Mensaje OSC recibido #null");
     if(theOscMessage.checkTypetag("i")){
     //NULL
 }
