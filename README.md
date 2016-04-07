@@ -11,4 +11,5 @@ OpenGL. Incluida desde Processing 2.0 . https://github.com/processing/processing
 ControlP5.http://www.sojamo.de/libraries/controlP5/#installation
 OscP5.http://www.sojamo.de/libraries/oscP5/#installation
 NetP5.http://www.sojamo.de/libraries/oscP5/#installation
-<img src="/normal#0.png" width="500" height="358" alt="Ejemplo Orquidea 0">
+
+<img src="normal#0.png" width="500" height="358" alt="Ejemplo Orquidea 0">
