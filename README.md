@@ -1,4 +1,4 @@
-<title><h1>#####Generador de orquideas</h2>
+<title><h1>#####Generador de orquideas</h1>
 <h3>#####Orchid Generator</h3>
 
 </title>
