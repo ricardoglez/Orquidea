@@ -12,4 +12,4 @@ ControlP5.http://www.sojamo.de/libraries/controlP5/#installation
 OscP5.http://www.sojamo.de/libraries/oscP5/#installation
 NetP5.http://www.sojamo.de/libraries/oscP5/#installation
 
-<img src="normal#0.png" width="500" height="358" alt="Ejemplo Orquidea 0">
+![alt tag](https://github.com/ricardoglez/Orquidea/blob/master/normal%230.png)
