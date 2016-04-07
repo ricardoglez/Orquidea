@@ -16,9 +16,10 @@ NetP5.http://www.sojamo.de/libraries/oscP5/#installation</br>
 </p>
 ![alt tag](https://github.com/ricardoglez/Orquidea/blob/master/normal%230.png)
 </br>
-![alt tag](https://github.com/ricardoglez/Orquidea/blob/master/normal%230.png)
+![alt tag](https://github.com/ricardoglez/Orquidea/blob/master/orquidea-%23%23%23%23.jpg)
 </br>
 ![alt tag](https://github.com/ricardoglez/Orquidea/blob/master/normal%231.png)
 </br>
-![alt tag](https://github.com/ricardoglez/Orquidea/blob/master/orquidea-%23%23%23%23.jpg)
+![alt tag](https://github.com/ricardoglez/Orquidea/blob/master/normal%232.png)
+
 </body>
