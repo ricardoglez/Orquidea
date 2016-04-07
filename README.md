@@ -3,9 +3,7 @@
 
 
 <body>
-<p>Genera estructuras de orquideas por medio de los parametros de análisis facial enviados por osc desde otro sketch</p>
-<p>Análisis facial y envio de datos por OSC <a href="https://github.com/ricardoglez/RostroyOSC" title="RostroOSC"></a></p>
-
+<p>Genera estructuras de orquideas por medio de los parametros de análisis facial enviados por osc desde otro sketch https://github.com/ricardoglez/RostroyOSC
 
 <p>Librerias utilizadas en el proyecto, pueden descargarse directamente del IDE de Processing.</p>
 
