@@ -1,6 +1,7 @@
-<title>## Orquidea</title>
-<title>Generador de orquideas</title>
-<title>Orchid Generator</title>
+<title><h1>#####Generador de orquideas</h2>
+<h3>#####Orchid Generator</h3>
+
+</title>
 
 <body>
 <p>Genera estructuras de orquideas por medio de los parametros de análisis facial enviados por osc desde otro sketch</p>
