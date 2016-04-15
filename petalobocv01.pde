@@ -150,7 +150,7 @@ Comienza el proceso de dibujo
 void draw() {
 // noLoop();
 // background(#f9eaa4);
-background(0);
+background(255);
 pushMatrix();
 translate(width / 2, height / 2);
 paleta = palG.createPal(colorDatosH);
@@ -168,17 +168,17 @@ paleta = palG.createPal(colorDatosH);
         //println("var",particularVar);
         //La distancia del pinto inicial de la cabeza hasta el punto inicial de los ojos
         float distanciaCaraOjos =dist(caraDatosE[0],caraDatosE[1],ojosDatosE[0], ojosDatosE[1]);
-        float val2 = map(distanciaCaraOjos,50, 100, -15, -5)*10;
+        float val2 = map(distanciaCaraOjos,58, 134, 16, -19)*11;
         println("####disctCaraOjos(mapeada):",val2);
         //val2 = constrain(val2, -5,-12);
         //println("####disctCaraOjos(constiñida):",val2);
 // la distancia delos ojos a la boca
         float distanciaOjosBoca =dist(ojosDatosE[0],ojosDatosE[1],bocaDatosE[0], bocaDatosE[1]);
-        float val1 = map(distanciaOjosBoca,60, 100, 5, 15)*10;
+        float val1 = map(distanciaOjosBoca,29, 112, 46, 24)*10;
         println("####disctOjosBoca(mapeada):",val1);
         selecModelo();
         randomSeed(0);
-        float rand = random(-10,10);
+        float rand = random(-32,62);
         float particularVar = noise(rand);
         //val1 = constrain(val1, 5, 12);
         //println("####disctOjosBoca(constriñida):",val1);
@@ -218,24 +218,24 @@ paleta = palG.createPal(colorDatosH);
                           random(110,120),paleta[0],-20
                           );*/
   pushMatrix();
-  scale(2);
+  scale(5);
                 dibujarBase(caraDatosE[2]*particularVar,val1, val2, caraDatosE[2]*particularVar
                             //,narizDatosE[3]*10.2,narizDatosE[2]*13.2,
-                            ,caraDatosE[2]*5.5,caraDatosE[2]*7.5,
-                            random(110,120),paleta[0],-50
+                            ,caraDatosE[2]*3.5,caraDatosE[2]*3.5,
+                            random(200,220),paleta[0],-50
                             );
                 dibujarPetalo2(ojosDatosE[2], ojosDatosE[2], ojosDatosE[2],ojosDatosE[2],
-                               (ojosDatosE[2]*7.2), (ojosDatosE[3]*5.2),
-                               random(80,90), paleta[3], 10
+                               (ojosDatosE[2]*.2), (ojosDatosE[3]*-4.8),
+                               random(200,220), paleta[3], 17
                                );
 
 
                 dibujarPetalo5(narizDatosE[2], narizDatosE[2], narizDatosE[2],narizDatosE[2],
-                               (narizDatosE[2]*4.4), (narizDatosE[3]*6.9),
+                               (narizDatosE[2]*2.4), (narizDatosE[3]*5.2),
                                random(90,100), paleta[5], 20
                                );
                 dibujarPetalo6(narizDatosE[2], narizDatosE[2], narizDatosE[2],narizDatosE[2],
-                               (narizDatosE[2]*3.6), (narizDatosE[3]*4.8),
+                               (narizDatosE[2]*8.0), (narizDatosE[3]*4.8),
                                random(90,100), paleta[3], 20
                                );
 popMatrix();
@@ -259,16 +259,16 @@ popMatrix();
         popMatrix();
 
         pushMatrix();
-        translate(50, 0,0);
+        translate(7, -459,9);
         palG.dibujarPaletaF();
         popMatrix();
   pushMatrix();
-    translate(width/2,height/2+10);
+    translate(width/2,height/2+60);
     rotateX(90);
     dibujarBase(caraDatosE[2]*particularVar,val1, val2,caraDatosE[2]*particularVar
-              ,(narizDatosE[3]*4.2),(narizDatosE[2]*6.2),
+              ,(narizDatosE[3]*11.6),(narizDatosE[2]*17.0),
               //,caraDatosE[2]*8.2,caraDatosE[2]*8.2,
-              random(110,120),paleta[2],-20
+              random(227,220),paleta[2],-20
               );
   popMatrix();
 
@@ -279,10 +279,10 @@ popMatrix();
 
 void dibujarBase(float v0, float v1, float v2, float v3, float ancho,float altura, float op, color col, float z) {
         //float ra = random(10) * randomGaussian();
-        dibujarPetalo0(v0, v1, v2, v3, ancho, altura, op*.8, col, z - 2);
-        dibujarPetalo1(v0, v1, v2, v3, ancho, altura, op*.8, col, z - 2);
-        dibujarPetalo3(v0, v1, v2, v3, ancho, altura, op, col, z);
-        dibujarPetalo4(v0, v1, v2, v3, ancho, altura, op, col, z);
+        dibujarPetalo0(v0, v1, v2, v3, ancho, altura, op*1.8, col, z - 2);
+        dibujarPetalo1(v0, v1, v2, v3, ancho, altura, op*1.8, col, z - 2);
+        dibujarPetalo3(v0, v1, v2, v3, ancho, altura, op*2, col, z);
+        dibujarPetalo4(v0, v1, v2, v3, ancho, altura, op*2, col, z);
         dibujarPetalo5(v0, v1, v2, v3, ancho*.5, altura* .8, op *1.5, col, z + 2);
 }
 
