@@ -1,13 +1,39 @@
-import generativedesign.*;
-import processing.opengl.*;
-import controlP5.*;
-import oscP5.*;
-import netP5.*;
+import processing.core.*; 
+import processing.data.*; 
+import processing.event.*; 
+import processing.opengl.*; 
 
-import toxi.color.*;
-import toxi.color.theory.*;
-import toxi.util.datatypes.*;
-import java.util.Iterator;
+import generativedesign.*; 
+import processing.opengl.*; 
+import controlP5.*; 
+import oscP5.*; 
+import netP5.*; 
+import toxi.color.*; 
+import toxi.color.theory.*; 
+import toxi.util.datatypes.*; 
+import java.util.Iterator; 
+
+import java.util.HashMap; 
+import java.util.ArrayList; 
+import java.io.File; 
+import java.io.BufferedReader; 
+import java.io.PrintWriter; 
+import java.io.InputStream; 
+import java.io.OutputStream; 
+import java.io.IOException; 
+
+public class petalobocv01 extends PApplet {
+
+
+
+
+
+
+
+
+
+
+
 
 OscP5 oscp5;
 NetAddress dir;
@@ -37,8 +63,8 @@ int r1, r2, opac, opac1, opac2, opac3;
 Setup
 */ ////////////////////////////////////////////////////
 
-void setup() {
-        size(1200, 1000, OPENGL);
+public void setup() {
+        
         cp5 = new ControlP5(this);
         // Recibe los datos
         oscp5 = new OscP5(this, 12000);
@@ -122,14 +148,14 @@ Metodo de seleccion de paleta
    Seleccionar Modelo de la flor
  */
 
-void selecModelo(){
+public void selecModelo(){
         //Variables por las que se selecciona el tipo de modificaciones de la flor
         float distanciaCaraOjos =dist(caraDatosE[0],caraDatosE[1],ojosDatosE[0], ojosDatosE[1]);
         println("####disctCaraOjos(cruda):",distanciaCaraOjos);
         float val2 = map(distanciaCaraOjos,0, 150, 0, 10);
         println("####disctCaraOjos(mapeada):",val2);
         val2 = constrain(val2, 0,1);
-        println("####disctCaraOjos(constiñida):",val2);
+        println("####disctCaraOjos(consti\u00f1ida):",val2);
 
 
         // la distancia delos ojos a la boca
@@ -138,7 +164,7 @@ void selecModelo(){
         float val1 = map(distanciaOjosBoca,0, 150, 0, 10);
         println("####disctOjosBoca(mapeada):",val2);
         val1 = constrain(val1, 0, 1);
-        println("####disctOjosBoca(constriñida):",val1);
+        println("####disctOjosBoca(constri\u00f1ida):",val1);
 
 
 }
@@ -147,7 +173,7 @@ void selecModelo(){
 /*/ ////////////////////////////
 Comienza el proceso de dibujo
 */ /////////////////////////////
-void draw() {
+public void draw() {
 // noLoop();
 // background(#f9eaa4);
 background(255);
@@ -168,32 +194,32 @@ paleta = palG.createPal(colorDatosH);
         //println("var",particularVar);
         //La distancia del pinto inicial de la cabeza hasta el punto inicial de los ojos
         float distanciaCaraOjos =dist(caraDatosE[0],caraDatosE[1],ojosDatosE[0], ojosDatosE[1]);
-        float val2 = map(distanciaCaraOjos,58, 134, 16, -19)*11;
+        float val2 = map(distanciaCaraOjos,50, 100, -15, -5)*10;
         println("####disctCaraOjos(mapeada):",val2);
         //val2 = constrain(val2, -5,-12);
-        //println("####disctCaraOjos(constiñida):",val2);
+        //println("####disctCaraOjos(consti\u00f1ida):",val2);
 // la distancia delos ojos a la boca
         float distanciaOjosBoca =dist(ojosDatosE[0],ojosDatosE[1],bocaDatosE[0], bocaDatosE[1]);
-        float val1 = map(distanciaOjosBoca,29, 112, 46, 24)*10;
+        float val1 = map(distanciaOjosBoca,60, 100, 5, 15)*10;
         println("####disctOjosBoca(mapeada):",val1);
         selecModelo();
         randomSeed(0);
-        float rand = random(-32,62);
+        float rand = random(-10,10);
         float particularVar = noise(rand);
         //val1 = constrain(val1, 5, 12);
-        //println("####disctOjosBoca(constriñida):",val1);
+        //println("####disctOjosBoca(constri\u00f1ida):",val1);
         /*float distanciaCaraOjos =dist(caraDatosE[0],caraDatosE[1],ojosDatosE[0], ojosDatosE[1]);
            float val2 = map(distanciaCaraOjos,0, 150, 0, 10);
            println("####disctCaraOjos(mapeada):",val2);
            val2 = constrain(val2, 0,1);
-           println("####disctCaraOjos(constiñida):",val2);
+           println("####disctCaraOjos(consti\u00f1ida):",val2);
 
            // la distancia delos ojos a la boca
            float distanciaOjosBoca =dist(ojosDatosE[0],ojosDatosE[1],bocaDatosE[0], bocaDatosE[1]);
            float val1 = map(distanciaOjosBoca,0, 150, 0, 10);
            println("####disctOjosBoca(mapeada):",val1);
            val1 = constrain(val1, 0, 1);
-           println("####disctOjosBoca(constriñida):",val1);
+           println("####disctOjosBoca(constri\u00f1ida):",val1);
          */
         for (int i = 0; i <= numerodefiguras; i += intervalo) {
                 /*/ /////////////////////////////////////////////////////////////////////////////////////////
@@ -218,24 +244,24 @@ paleta = palG.createPal(colorDatosH);
                           random(110,120),paleta[0],-20
                           );*/
   pushMatrix();
-  scale(5);
+  scale(2);
                 dibujarBase(caraDatosE[2]*particularVar,val1, val2, caraDatosE[2]*particularVar
                             //,narizDatosE[3]*10.2,narizDatosE[2]*13.2,
-                            ,caraDatosE[2]*3.5,caraDatosE[2]*3.5,
+                            ,caraDatosE[2]*5.5f,caraDatosE[2]*7.5f,
                             random(200,220),paleta[0],-50
                             );
                 dibujarPetalo2(ojosDatosE[2], ojosDatosE[2], ojosDatosE[2],ojosDatosE[2],
-                               (ojosDatosE[2]*.2), (ojosDatosE[3]*-4.8),
-                               random(200,220), paleta[3], 17
+                               (ojosDatosE[2]*7.2f), (ojosDatosE[3]*5.2f),
+                               random(200,220), paleta[3], 10
                                );
 
 
                 dibujarPetalo5(narizDatosE[2], narizDatosE[2], narizDatosE[2],narizDatosE[2],
-                               (narizDatosE[2]*2.4), (narizDatosE[3]*5.2),
+                               (narizDatosE[2]*4.4f), (narizDatosE[3]*6.9f),
                                random(90,100), paleta[5], 20
                                );
                 dibujarPetalo6(narizDatosE[2], narizDatosE[2], narizDatosE[2],narizDatosE[2],
-                               (narizDatosE[2]*8.0), (narizDatosE[3]*4.8),
+                               (narizDatosE[2]*3.6f), (narizDatosE[3]*4.8f),
                                random(90,100), paleta[3], 20
                                );
 popMatrix();
@@ -259,16 +285,16 @@ popMatrix();
         popMatrix();
 
         pushMatrix();
-        translate(7, -459,9);
+        translate(50, 0,0);
         palG.dibujarPaletaF();
         popMatrix();
   pushMatrix();
-    translate(width/2,height/2+60);
+    translate(width/2,height/2+10);
     rotateX(90);
     dibujarBase(caraDatosE[2]*particularVar,val1, val2,caraDatosE[2]*particularVar
-              ,(narizDatosE[3]*11.6),(narizDatosE[2]*17.0),
+              ,(narizDatosE[3]*4.2f),(narizDatosE[2]*6.2f),
               //,caraDatosE[2]*8.2,caraDatosE[2]*8.2,
-              random(227,220),paleta[2],-20
+              random(200,220),paleta[2],-20
               );
   popMatrix();
 
@@ -277,16 +303,16 @@ popMatrix();
 // TODO TAmbien crear una clase de Oquridea en la cual sea mas sencillo dibujar
 // la flor desde una linea
 
-void dibujarBase(float v0, float v1, float v2, float v3, float ancho,float altura, float op, color col, float z) {
+public void dibujarBase(float v0, float v1, float v2, float v3, float ancho,float altura, float op, int col, float z) {
         //float ra = random(10) * randomGaussian();
-        dibujarPetalo0(v0, v1, v2, v3, ancho, altura, op*1.8, col, z - 2);
-        dibujarPetalo1(v0, v1, v2, v3, ancho, altura, op*1.8, col, z - 2);
+        dibujarPetalo0(v0, v1, v2, v3, ancho, altura, op*1.8f, col, z - 2);
+        dibujarPetalo1(v0, v1, v2, v3, ancho, altura, op*1.8f, col, z - 2);
         dibujarPetalo3(v0, v1, v2, v3, ancho, altura, op*2, col, z);
         dibujarPetalo4(v0, v1, v2, v3, ancho, altura, op*2, col, z);
-        dibujarPetalo5(v0, v1, v2, v3, ancho*.5, altura* .8, op *1.5, col, z + 2);
+        dibujarPetalo5(v0, v1, v2, v3, ancho*.5f, altura* .8f, op *1.5f, col, z + 2);
 }
 
-void dibujarPetalo0(float v0, float v1, float v2, float v3, float ancho,float altura, float op, color col, float z) {
+public void dibujarPetalo0(float v0, float v1, float v2, float v3, float ancho,float altura, float op, int col, float z) {
 
         int xC = 0;
         int yC = 0;
@@ -363,7 +389,7 @@ void dibujarPetalo0(float v0, float v1, float v2, float v3, float ancho,float al
         popMatrix();
 }
 
-void dibujarPetalo1(float v0, float v1, float v2, float v3, float ancho,float altura, float op, color col, float z) {
+public void dibujarPetalo1(float v0, float v1, float v2, float v3, float ancho,float altura, float op, int col, float z) {
         int xC = 0;
         int yC = 0;
         pushMatrix();
@@ -406,7 +432,7 @@ void dibujarPetalo1(float v0, float v1, float v2, float v3, float ancho,float al
         popMatrix();
 }
 
-void dibujarPetalo2(float v0, float v1, float v2, float v3, float ancho,float altura, float op, color col, float z) {
+public void dibujarPetalo2(float v0, float v1, float v2, float v3, float ancho,float altura, float op, int col, float z) {
         pushMatrix();
         translate(0, 0, z);
         /*
@@ -430,7 +456,7 @@ void dibujarPetalo2(float v0, float v1, float v2, float v3, float ancho,float al
         popMatrix();
 }
 
-void dibujarPetalo3(float v0, float v1, float v2, float v3, float ancho,float altura, float op, color col, float z) {
+public void dibujarPetalo3(float v0, float v1, float v2, float v3, float ancho,float altura, float op, int col, float z) {
         int xC = 0;
         int yC = 0;
         // println("Ancho:", ancho, "Altura:", altura, "Centro x:", xC, "Centro y:",
@@ -459,7 +485,7 @@ void dibujarPetalo3(float v0, float v1, float v2, float v3, float ancho,float al
            line(0, v2, 0, 0);
          */
         fill(col, op / 5);
-        strokeWeight(.5);
+        strokeWeight(.5f);
         //stroke(paleta[3], op);
         //stroke(#ffffff);
         noStroke();
@@ -472,8 +498,8 @@ void dibujarPetalo3(float v0, float v1, float v2, float v3, float ancho,float al
         popMatrix();
 }
 
-void dibujarPetalo4(float v0, float v1, float v2, float v3, float ancho,
-                    float altura, float op, color col, float z) {
+public void dibujarPetalo4(float v0, float v1, float v2, float v3, float ancho,
+                    float altura, float op, int col, float z) {
         int xC = 0;
         int yC = 0;
         pushMatrix();
@@ -517,8 +543,8 @@ void dibujarPetalo4(float v0, float v1, float v2, float v3, float ancho,
         popMatrix();
 }
 
-void dibujarPetalo5(float v0, float v1, float v2, float v3, float ancho,
-                    float altura, float op, color col, float z) {
+public void dibujarPetalo5(float v0, float v1, float v2, float v3, float ancho,
+                    float altura, float op, int col, float z) {
         int xC = 0;
         int yC = 0;
         pushMatrix();
@@ -556,8 +582,8 @@ void dibujarPetalo5(float v0, float v1, float v2, float v3, float ancho,
         popMatrix();
 }
 
-void dibujarPetalo6(float v0, float v1, float v2, float v3, float ancho,
-                    float altura, float op, color col, float z) {
+public void dibujarPetalo6(float v0, float v1, float v2, float v3, float ancho,
+                    float altura, float op, int col, float z) {
         int xC = 0;
         int yC = 0;
         pushMatrix();
@@ -596,7 +622,7 @@ void dibujarPetalo6(float v0, float v1, float v2, float v3, float ancho,
         popMatrix();
 }
 
-void keyPressed() {
+public void keyPressed() {
         if (key == 's') {
                 saveFrame("normal.png");
                 //  saveHiRes(5);
@@ -619,7 +645,7 @@ Funcion que guarda muestra del rostro del interactor
 
    hires.save("hires.png");
    }*/
-void oscEvent(OscMessage theOscMessage) {
+public void oscEvent(OscMessage theOscMessage) {
         /* check if theOscMessage has the address pattern we are looking for. */
         if (theOscMessage.checkAddrPattern("/datos/color/") == true) {
                 //println("### Mensaje OSC recibido #0");
@@ -647,9 +673,9 @@ void oscEvent(OscMessage theOscMessage) {
                         caraDatosE[0] = theOscMessage.get(0).intValue();
                         caraDatosE[1] = theOscMessage.get(1).intValue();
                         caraDatosE[2] = theOscMessage.get(2).intValue();
-                        caraDatosE[2] = int(map(caraDatosE[2], 200, 360, 10, 100));
+                        caraDatosE[2] = PApplet.parseInt(map(caraDatosE[2], 200, 360, 10, 100));
                         caraDatosE[3] = theOscMessage.get(3).intValue();
-                        caraDatosE[3] = int(map(caraDatosE[3], 200, 360, 10, 50));
+                        caraDatosE[3] = PApplet.parseInt(map(caraDatosE[3], 200, 360, 10, 50));
 
                         //print("### Mensaje OSC recibido.");
                         //println("Datos Cara: " + caraDatosE[0] + ", " + caraDatosE[1] + ", " +
@@ -665,9 +691,9 @@ void oscEvent(OscMessage theOscMessage) {
                         ojosDatosE[0] = theOscMessage.get(0).intValue();
                         ojosDatosE[1] = theOscMessage.get(1).intValue();
                         ojosDatosE[2] = theOscMessage.get(2).intValue();
-                        ojosDatosE[2] = int(map(ojosDatosE[2], 120, 264, 10, 50));
+                        ojosDatosE[2] = PApplet.parseInt(map(ojosDatosE[2], 120, 264, 10, 50));
                         ojosDatosE[3] = theOscMessage.get(3).intValue();
-                        ojosDatosE[3] = int(map(ojosDatosE[3], 28, 60, 10, 30));
+                        ojosDatosE[3] = PApplet.parseInt(map(ojosDatosE[3], 28, 60, 10, 30));
                         // print("### Mensaje OSC recibido.");
                         //  println("Datos Ojos: " + ojosDatosE[0] + ", " + ojosDatosE[1] + ", " +
                         //          ojosDatosE[2] + ", " + ojosDatosE[3]);
@@ -682,9 +708,9 @@ void oscEvent(OscMessage theOscMessage) {
                         narizDatosE[0] = theOscMessage.get(0).intValue();
                         narizDatosE[1] = theOscMessage.get(1).intValue();
                         narizDatosE[2] = theOscMessage.get(2).intValue();
-                        narizDatosE[2] = int(map(narizDatosE[2], 80, 168, 10, 50));
+                        narizDatosE[2] = PApplet.parseInt(map(narizDatosE[2], 80, 168, 10, 50));
                         narizDatosE[3] = theOscMessage.get(3).intValue();
-                        narizDatosE[3] = int(map(narizDatosE[3], 68, 140, 10, 30));
+                        narizDatosE[3] = PApplet.parseInt(map(narizDatosE[3], 68, 140, 10, 30));
                         //print("### Mensaje OSC recibido.");
                         //println("Datos Nariz: " + narizDatosE[0] + ", " + narizDatosE[1] + ", " +
                         //          narizDatosE[2] + ", " + narizDatosE[3]);
@@ -699,9 +725,9 @@ void oscEvent(OscMessage theOscMessage) {
                         bocaDatosE[0] = theOscMessage.get(0).intValue();
                         bocaDatosE[1] = theOscMessage.get(1).intValue();
                         bocaDatosE[2] = theOscMessage.get(2).intValue();
-                        bocaDatosE[2] = int(map(bocaDatosE[2], 100, 156, 10, 50));
+                        bocaDatosE[2] = PApplet.parseInt(map(bocaDatosE[2], 100, 156, 10, 50));
                         bocaDatosE[3] = theOscMessage.get(3).intValue();
-                        bocaDatosE[3] = int(map(bocaDatosE[3], 60, 92, 10, 30));
+                        bocaDatosE[3] = PApplet.parseInt(map(bocaDatosE[3], 60, 92, 10, 30));
                         //print("### Mensaje OSC recibido.");
                         //println("Datos Boca: " + bocaDatosE[0] + ", " + bocaDatosE[1] + ", " +
                         //          bocaDatosE[2] + ", " + bocaDatosE[3]);
@@ -714,4 +740,115 @@ void oscEvent(OscMessage theOscMessage) {
                 }
         }
         //println("### Direccion del mensaje" + theOscMessage.addrPattern());
+}
+
+class paletaGen {
+TColor col;
+ColorList tria;
+ColorList anal;
+ColorList comp;
+ColorList lSplit;
+int[] paletaCustom = new int[6];
+float SWATCH_HEIGHT = 20;
+float SWATCH_WIDTH = 0;
+int SWATCH_GAP = 15;
+
+int yoff = 85;
+int rand;
+
+paletaGen(){
+
+}
+
+public int[] createPal(String hex){
+        col = TColor.newHex(hex);
+        // Creacuion de las listas donde se guardan las paletas creadas
+        tria = new ColorList();
+        anal = new ColorList();
+        comp = new ColorList();
+        lSplit = new ColorList();
+        //background(0);
+        // ArrayList strategies = ColorTheoryRegistry.getRegisteredNames();
+        // println(strategies);
+        tria = ColorList.createUsingStrategy(
+                ColorTheoryRegistry.getStrategyForName("TRIAD"), col);
+        tria = tria.sortByProximityTo(col, false);
+        //SWATCH_WIDTH = (width - 200) / tria.size();
+        //swatches(tria, 100, 50);
+
+        anal = ColorList.createUsingStrategy(
+                ColorTheoryRegistry.getStrategyForName("ANALOGOUS"), col);
+        anal = anal.sortByProximityTo(col, false);
+        //SWATCH_WIDTH = (width - 200) / anal.size();
+        //swatches(anal, 100, 100);
+
+        comp = ColorList.createUsingStrategy(
+                ColorTheoryRegistry.getStrategyForName("COMPOUND"), col);
+        comp = comp.sortByProximityTo(col, false);
+        //SWATCH_WIDTH = (width - 200) / comp.size();
+        //swatches(comp, 100, 150);
+
+        lSplit = ColorList.createUsingStrategy(
+                ColorTheoryRegistry.getStrategyForName("SPLIT_COMPLEMENTARY"), col);
+        lSplit = lSplit.sortByProximityTo(col, false);
+        //SWATCH_WIDTH = (width - 200) / lSplit.size();
+        //swatches(lSplit, 100, 200);
+        // Convertir paleta a integers RGBA
+        int[] colTria = tria.toARGBArray();
+        int[] colAnal = anal.toARGBArray();
+        int[] colComp = comp.toARGBArray();
+        int[] colSplit = lSplit.toARGBArray();
+        paletaCustom[0] = colComp[1];
+        paletaCustom[1] = colAnal[1];
+        paletaCustom[2] = colAnal[3];
+        paletaCustom[3] = colAnal[4];
+        paletaCustom[4] = colTria[2];
+        paletaCustom[5] = colSplit[1];
+
+        //println("#######");
+        //println("####Paleta Nueva: ", hex);
+        return paletaCustom;
+}
+
+public void dibujarPaletaF(){
+
+        // Dibujar la paleta generada en relacion al color extraido
+        fill(paletaCustom[0]);
+        rect(10, height/2, 30, 80);
+        fill(paletaCustom[1]);
+        rect(40, height/2, 30, 80);
+        fill(paletaCustom[2]);
+        rect(70, height/2, 30, 80);
+        fill(paletaCustom[3]);
+        rect(100, height/2, 30, 80);
+        fill(paletaCustom[4]);
+        rect(130, height/2, 30, 80);
+        fill(paletaCustom[5]);
+        rect(160, height/2, 30, 80);
+
+}
+
+// Dibujar las paletas
+public void swatch(TColor c, int x, int y) {
+        fill(c.toARGB());
+        rect(x, y, SWATCH_WIDTH, SWATCH_HEIGHT);
+}
+public void swatches(ColorList sorted, int x, int y) {
+        noStroke();
+        for (Iterator i = sorted.iterator(); i.hasNext(); ) {
+                TColor c = (TColor)i.next();
+                swatch(c, x, y);
+                x += SWATCH_WIDTH + SWATCH_GAP;
+        }
+}
+}
+  public void settings() {  size(1200, 1000, OPENGL); }
+  static public void main(String[] passedArgs) {
+    String[] appletArgs = new String[] { "petalobocv01" };
+    if (passedArgs != null) {
+      PApplet.main(concat(appletArgs, passedArgs));
+    } else {
+      PApplet.main(appletArgs);
+    }
+  }
 }
