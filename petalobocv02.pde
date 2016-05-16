@@ -1,4 +1,4 @@
-/*import controlP5.*;
+import controlP5.*;
 import toxi.color.*;
 import toxi.color.theory.*;
 import toxi.util.datatypes.*;
@@ -345,4 +345,4 @@ void keyPressed() {
 
  hires.save("hires.png");
  }*/
- */
+ 
