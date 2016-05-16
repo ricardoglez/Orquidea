@@ -68,7 +68,6 @@ int[] createPal(String hex){
 }
 
 void dibujarPaletaF(){
-
         // Dibujar la paleta generada en relacion al color extraido
         fill(paletaCustom[0]);
         rect(10, height/2, 30, 80);
